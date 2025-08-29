@@ -22,10 +22,7 @@
     <div id="statusTag" style="display:none"></div>
     <h1 id="title">Verifying...</h1>
     <div id="messageContainer"></div>
-    <div class="actions" id="actions" style="display:none">
-      <a id="loginLink" class="btn">Go to Login</a>
-      <a id="helpLink" class="btn secondary" target="_blank" href="https://supabase.com/docs/guides/auth">Help</a>
-    </div>
+    <p id="closeInstr" class="muted" style="display:none">You can now close this window and return to the app to sign in.</p>
     <small>If you're on mobile, return to the app and sign in after verifying your email.</small>
   </div>
 
@@ -52,9 +49,9 @@
       titleEl.textContent = title;
       container.innerHTML = '<div class="' + (type === "success" ? "success" : "error") + '">' + message + '</div>';
       status.style.display = 'block';
-      document.getElementById('actions').style.display = 'flex';
-      document.getElementById('loginLink').href = '/'; // page root - replace with your app's login URL if hosted
-      document.getElementById('loginLink').textContent = 'Back to Login';
+      // Show a simple instruction so mobile users can close the browser and return to the app.
+      var closeEl = document.getElementById('closeInstr');
+      if (closeEl) closeEl.style.display = 'block';
     }
 
     (function init() {
